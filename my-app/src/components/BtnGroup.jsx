@@ -12,7 +12,7 @@ class BtnGroup extends React.Component {
         };
     };
 
-    handleClick = (side) => {
+    handleClick = (side) => () => {
         if (side === "left") {
             this.setState(
                 {
@@ -32,6 +32,9 @@ class BtnGroup extends React.Component {
         }
     };
 
+    handleClickLeft = this.handleClick("left");
+    handleClickRight = this.handleClick("right");
+
     render() {
         const classesLeftButton = cn("btn", "btn-secondary",{
             left: true,
@@ -50,8 +53,8 @@ class BtnGroup extends React.Component {
 
         return (
             <div className={classesBtnGroup} role={alertAttrs.role}>
-                <button type={alertAttrs.type} className={classesLeftButton} onClick={() => this.handleClick("left")}>Left</button>
-                <button type={alertAttrs.type} className={classesRightButton} onClick={() => this.handleClick("right")}>Right</button>
+                <button type={alertAttrs.type} className={classesLeftButton} onClick={this.handleClickLeft}>Left</button>
+                <button type={alertAttrs.type} className={classesRightButton} onClick={this.handleClickRight}>Right</button>
             </div>
         );
     };
